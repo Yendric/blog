@@ -6,6 +6,18 @@
     <meta name="description" content="{{ .MetaData.description }}" />
     <meta name="author" content="{{ .MetaData.author }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta name="generator" content="Yendrics Blog Generator" />
+
+    <meta property="og:title" content="{{ .MetaData.title }}" />
+    <meta property="og:description" content="{{ .MetaData.description }}"/>
+    <meta property="og:type" content="article" />
+    <meta property="article:author" content="{{ .MetaData.author }}" />
+    <meta property="og:url" content="{{ .Url }}" />
+    <meta name="twitter:title" content="{{.MetaData.title}}">
+    <meta name="twitter:description" content="{{ .MetaData.description }}">
+    <meta name="twitter:card" content="summary">
+
     <link href="/assets/img/icon.png" rel="shortcut icon" />
     <link href="/assets/style.css" rel="stylesheet" />
   </head>
