@@ -5,6 +5,6 @@
   },
   "scripts": {
     "dev": "npx tailwindcss -i ./assets/style.css -o ./build/assets/style.css --watch",
-    "build": "npx tailwindcss -i ./assets/style.css -o ./build/assets/style.css"
+    "build": "npx tailwindcss -i ./assets/style.css -o ./build/assets/style.css --minify"
   }
 }
