@@ -1,5 +1,6 @@
 ---
-title: Upload
+title: Yendric Uploads
+description: Yendric Uploads is een website geschreven in een eigen PHP framework die een overzichtelijke weergave biedt voor alle bestanden die ik upload
 date: 2021-07-23
 author: Yendric
 ---

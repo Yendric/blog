@@ -1,5 +1,6 @@
 ---
 title: Blog
+description: Hoe is yendric.be gemaakt? In deze post leg ik het uit.
 date: 2021-07-23
 author: Yendric
 ---

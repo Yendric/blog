@@ -1,10 +1,11 @@
 ---
 title: Nginx server blocks maken
+description: Deze guide toont hoe je een nginx server block maakt voor een PHP 8.1 applicatie.
 date: 2021-07-23
 author: Yendric
 ---
 
-Deze guide toont hoe je een nginx server block maakt voor een PHP applicatie. Ik ga ervanuit dat PHP8.0 al geïnstalleerd is en je een [geldig SSL certificaat](/hoe-maak-je-een-gratis-ssl-certificaat/) hebt.
+Deze guide toont hoe je een nginx server block maakt voor een PHP applicatie. Ik ga ervanuit dat PHP8.1 al geïnstalleerd is en je een [geldig SSL certificaat](/hoe-maak-je-een-gratis-ssl-certificaat/) hebt.
 
 Plaats het volgende in `/etc/nginx/sites-available/<website>.conf`
 
@@ -54,7 +55,7 @@ server {
 
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:/run/php/php8.0-fpm.sock;
+        fastcgi_pass unix:/run/php/php8.1-fpm.sock;
         fastcgi_index index.php;
         include fastcgi_params;
         fastcgi_param PHP_VALUE "upload_max_filesize = 100M \n post_max_size=100M";

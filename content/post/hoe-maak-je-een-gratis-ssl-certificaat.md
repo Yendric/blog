@@ -1,5 +1,6 @@
 ---
 title: Hoe maak je een gratis SSL certificaat?
+description: Deze tutorial legt uit hoe je gratis een SSL certificaat kan maken via Let's Encrypt met behulp van certbot.
 date: 2021-07-23
 author: Yendric
 ---

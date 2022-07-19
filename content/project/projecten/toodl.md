@@ -1,5 +1,6 @@
 ---
-title: Toodl
+title: Toodl Planningmaker
+description: Toodl is een web applicatie voor het bijhouden van todos, ook is er een planningsweergave waarin je een weekplanning kan maken en afdrukken.
 date: 2021-07-23
 author: Yendric
 ---

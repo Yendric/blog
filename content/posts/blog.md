@@ -1,5 +1,6 @@
 ---
-title: Yendric's blog
+title: Yendric's blogposts
+description: Heeel af en toe schrijf ik eens een blogpost of tutorial. Die vind je hier.
 ---
 
 # Blog

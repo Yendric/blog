@@ -1,5 +1,6 @@
 ---
 title: YeWeb CMS
+description: YeWeb CMS is een Content Management System (Website Maker) voor en door developers.
 date: 2021-07-23
 author: Yendric
 ---
