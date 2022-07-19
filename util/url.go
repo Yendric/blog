@@ -3,7 +3,7 @@ package util
 import "strings"
 
 func GenerateUrl(parts ...string) string {
-	return "/" + strings.Join(deleteEmpty(parts), "/")
+	return "/" + strings.Join(deleteEmpty(parts), "/") + "/"
 }
 
 func deleteEmpty(s []string) []string {
