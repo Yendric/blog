@@ -53,16 +53,16 @@ func generateFile(mdFileName string, templateName string) {
 
 	if mdFileName == "index.md" || mdFileName == "404.md" {
 
-		buildFile, err = os.Create("./build" + contentFile.Url + ".html")
+		buildFile, err = os.Create("./build" + contentFile.Path + ".html")
 		if err != nil {
 			log.Fatal(err)
 		}
 	} else {
-		err = os.MkdirAll("./build"+contentFile.Url, os.ModePerm)
+		err = os.MkdirAll("./build"+contentFile.Path, os.ModePerm)
 		if err != nil {
 			log.Fatal(err)
 		}
-		buildFile, err = os.Create("./build" + contentFile.Url + "/index.html")
+		buildFile, err = os.Create("./build" + contentFile.Path + "/index.html")
 		if err != nil {
 			log.Fatal(err)
 		}

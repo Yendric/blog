@@ -45,6 +45,7 @@ func generateTemplateForDirectory(directory string) {
 		data.Content = GetContent(fileContent)
 		data.FileName = file.Name()
 		data.Url = util.GenerateUrl(strings.Join(strings.Split(directory, "/")[3:], "/"), strings.ReplaceAll(file.Name(), ".md", ""))
+		data.Path = data.Url[:len(data.Url)-1]
 		contentFiles = append(contentFiles, data)
 	}
 
