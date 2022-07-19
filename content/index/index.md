@@ -1,5 +1,5 @@
 ---
-title: Yendric's blog - Home
+title: Yendrics blog - Home
 description: Hallo, ik ben Yendric! Ik ben 16 jaar oud en in mijn vrije tijd programmeer ik graag.
 ---
 

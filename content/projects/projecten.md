@@ -1,5 +1,5 @@
 ---
-title: Yendric's Projecten 
+title: Yendrics projecten 
 description: In mijn vrije tijd werk ik vaak aan kleine projectjes. Een aantal daarvan heb ik op deze pagina gezet en meestal plaats ik ze ook op Github.
 ---
 
