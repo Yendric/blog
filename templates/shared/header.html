@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <title>{{.MetaData.title}}</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="{{ .MetaData.description }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/assets/img/icon.png" rel="shortcut icon" />
+    <link href="/assets/style.css" rel="stylesheet" />
+  </head>
+  <body class="bg-white dark:bg-gray-800 flex flex-col min-h-screen">
+    <header class="xl:max-w-6xl container mx-auto flex justify-between items-center mt-8 mb-14">
+      <div>
+        <h1 class="text-6xl dark:text-white font-extrabold">Yendric<span class="text-xl">.be</span></h1>
+        <p class="dark:text-white">Een beetje info over projectjes en af en toe een blogpost.</p>
+      </div>
+      <nav>
+        <ul class="flex gap-6 text-xl dark:text-white">
+          <li>
+            <a href="/" class="hover:underline {{if eq .Url "index"}}underline{{end}}">Home</a>
+          </li>
+          <li>
+            <a href="/blog" class="hover:underline {{if eq .Url "blog"}}underline{{end}}">Blog</a>
+          </li>
+          <li>
+            <a href="/projecten" class="hover:underline {{if eq .Url "projecten"}}underline{{end}}">Projecten</a>
+          </li>
+          <li>
+            <a href="https://github.com/Yendric" target="_blank" class="hover:underline">Github</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="flex-grow">
