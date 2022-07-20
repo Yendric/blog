@@ -42,6 +42,7 @@ func generateFile(mdFileName string, templateName string) {
 		"truncate":       util.Truncate,
 		"getCurrentYear": util.GetCurrentYear,
 		"getCssLocation": util.GetCssLocation,
+		"sortByDate":     util.SortByDate,
 	}
 
 	template, err := template.New(templateName + ".html").Funcs(funcMap).ParseGlob("./templates/*.html")
