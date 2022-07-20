@@ -21,7 +21,7 @@ func Truncate(s string) string {
 	if len(s) > 150 {
 		return s[:150] + "..."
 	}
-	return s[:150]
+	return s
 }
 
 func StripTags(htmlText template.HTML) string {
