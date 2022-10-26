@@ -1,7 +1,7 @@
 ---
 title: Het eerste wat je moet doen als er iets niet werkt op je pc
 description: In deze post leg ik uit hoe je de DISM en sfc tools in windows kunt gebruiken om problemen op te lossen.
-date: 2021-07-23
+date: 2021-07-24
 author: Yendric
 ---
 
