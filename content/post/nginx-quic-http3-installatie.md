@@ -1,5 +1,5 @@
 ---
-title: Hoe maak je een HTTP3 quic nginx server.
+title: Hoe maak je een HTTP3 quic nginx server?
 description: Deze korte guide toont hoe je de nieuwe versie van nginx met http3 module kan installeren en hoe je deze kan configureren.
 date: 2023-06-27
 author: Yendric
