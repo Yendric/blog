@@ -18,5 +18,5 @@ Het omvat de volgende functies:
 - Modern design met dark mode support
 
 Hieronder ziet u enkele screenshots:
-![Item (geluidsfragment) bekijken](/assets/img/upload-bekijk-item.png)
-![Item uploaden](/assets/img/upload-upload-item.png)
+![Item (geluidsfragment) bekijken](/assets/img/upload-bekijk-item.jpg)
+![Item uploaden](/assets/img/upload-upload-item.jpg)
