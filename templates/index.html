@@ -1,5 +1,5 @@
 {{ template "header.html" .}}
-<main class="container mx-auto prose dark:prose-invert">
+<main class="container xl:max-w-3xl mx-auto prose dark:prose-invert">
   {{ .Content }}
   {{ range  .Collections.post.SortByDate.Slice 0 3 }}
   <article class="mb-6">
