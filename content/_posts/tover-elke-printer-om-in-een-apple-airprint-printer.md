@@ -1,4 +1,5 @@
 ---
+template: post
 title: Tover elke printer om in een Apple AirPrint printer
 description: Deze guide toont hoe je elke printer kan omtoveren tot Apple Airprint printer.
 date: 2021-07-23

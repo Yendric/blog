@@ -2,5 +2,8 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.4",
     "tailwindcss": "^3.1.6"
+  },
+  "scripts": {
+    "build": "tailwindcss build -i public/assets/style.css -o build/assets/style.css --minify"
   }
 }

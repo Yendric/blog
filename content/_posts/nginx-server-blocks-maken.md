@@ -1,4 +1,5 @@
 ---
+template: post
 title: Nginx server blocks maken
 description: Deze guide toont hoe je een nginx server block maakt voor een PHP 8.1 applicatie.
 date: 2021-07-23
@@ -9,7 +10,7 @@ Deze guide toont hoe je een nginx server block maakt voor een PHP applicatie. Ik
 
 Plaats het volgende in `/etc/nginx/sites-available/<website>.conf`
 
-```
+```nginx
 server {
     listen 80;
     listen [::]:80;
@@ -79,7 +80,7 @@ server {
 Het is handig om je sites-available aan je sites-enabled te linken.
 Om dat te doen doe je het volgende:
 
-```
+```bash
 sudo ln -s /etc/nginx/sites-available/<website>.conf /etc/nginx/sites-enabled/<website>.conf
 ```
 

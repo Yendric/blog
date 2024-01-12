@@ -1,4 +1,5 @@
 ---
+template: index
 title: Yendrics blog - Home
 description: Hallo, ik ben Yendric! Ik ben 18 jaar oud en in mijn vrije tijd programmeer ik graag. Ik studeer informatica aan de KU-Leuven.
 ---

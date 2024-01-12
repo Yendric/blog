@@ -1,4 +1,5 @@
 ---
+template: project
 title: Boty
 description: Boty is een eenvoudige Discord Bot met verschillende basisfuncties zoals moderatie, memevoting en muziekchannels.
 date: 2022-05-01

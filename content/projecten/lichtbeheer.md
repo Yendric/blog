@@ -1,6 +1,7 @@
 ---
+template: project
 title: Lichtbeheer
-description: LichtBeheer is een Angular10 applicatie waarmee je Philips Hue lampen kan bedienen.  
+description: LichtBeheer is een Angular10 applicatie waarmee je Philips Hue lampen kan bedienen.
 date: 2021-07-23
 author: Yendric
 ---

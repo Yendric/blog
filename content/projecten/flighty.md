@@ -1,4 +1,5 @@
 ---
+template: project
 title: Flighty
 description: Flighty is een kleine vue app die toont welk vliegtuig er boven mijn regio vliegt.
 date: 2021-07-23
