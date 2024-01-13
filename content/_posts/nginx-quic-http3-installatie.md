@@ -19,19 +19,19 @@ Om dit te checken doe je het volgende: `nginx -V` en check je of deze `--with-ht
 
 Hiervoor moeten we een repository aan onze package manager toevoegen dat deze up-to-date versie bevat:
 
-```
+```bash
 sudo add-apt-repository ppa:ondrej/nginx-mainline
 ```
 
 Nadien updaten we de package index:
 
-```
+```bash
 sudo apt update
 ```
 
 en installeren we nginx:
 
-```
+```bash
 sudo apt install nginx
 ```
 
@@ -45,7 +45,7 @@ Het maken van een serverblock is onveranderd gebleven. Je hebt een server block 
 
 Nu moeten de listen directives voor http3 toegevoegd worden. Een voorbeeldconfiguratie zal er als volgt uitzien (zonder de +):
 
-```
+```diff
   listen 443 ssl;
 + listen 443 quic reuseport;
   listen [::]:443 ssl;
@@ -59,19 +59,19 @@ Het `reuseport` gedeelte is van belang. Het zorgt ervoor dat zowel http2 als htt
 
 We moeten ook aan de browser vertellen dat deze server http3 gebruikt. Dit doen we met behulp van een header, die we ook in het server block toevoegen:
 
-```
+```nginx
 add_header Alt-Svc 'h3=":$server_port"; ma=86400'
 ```
 
 Voor extra snelheid is het aangeraden het `ssl_early_data` directive op on te zeten:
 
-```
+```nginx
 ssl_early_data on;
 ```
 
 Tot slot moeten we op de firewall UDP poort 443 openen, gezien http3 hiervan gebruik maakt (ipv enkel TCP 443 waar http2 van gebruik maakt). Indien je ufw gebruikt kan dit als volgt:
 
-```
+```bash
 sudo ufw allow 443/udp
 ```
 
