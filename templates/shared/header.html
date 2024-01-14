@@ -21,11 +21,14 @@
 
   <link href="/assets/img/icon.png" rel="shortcut icon" />
   <link href="/assets/style.css" rel="stylesheet" />
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  <script src="https://unpkg.com/htmx.org/dist/ext/preload.js"></script>
 </head>
 
-<body class="bg-white dark:bg-gray-800 flex flex-col min-h-screen px-6">
+<body class="bg-white dark:bg-gray-800 flex flex-col min-h-screen px-6" hx-boost="true" hx-ext="preload">
   <nav
-    class="xl:max-w-6xl container mx-auto flex justify-between flex-wrap md:flex-nowrap items-center mt-8 mb-8 md:mb-14">
+    class="xl:max-w-6xl container mx-auto flex justify-between flex-wrap md:flex-nowrap items-center mt-8 mb-8 md:mb-14"
+    preload="mouseover">
     <div class="w-full md:w-auto flex justify-between items-center">
       <div>
         <a href="/">
@@ -67,4 +70,4 @@
       document.getElementById("nav").classList.toggle("hidden");
     });
   </script>
-  <div class="flex-grow">
+  <div class="flex-grow" preload="mouseover">
