@@ -1,2 +1,14 @@
-/:year/:month/:day/:slug /:slug/ 301
 /:year/:month/:day/:slug/ /:slug/ 301
+/:year/:month/:day/:slug /:slug/ 301
+/nginx-server-blocks-maken/ /creating-nginx-server-blocks/ 301
+/nginx-server-blocks-maken /creating-nginx-server-blocks/ 301
+/nginx-quic-http3-installatie/ /nginx-quic-http3-installation/ 301
+/nginx-quic-http3-installatie /nginx-quic-http3-installation/ 301
+/het-eerste-dat-je-moet-doen-als-er-iets-niet-werkt-op-je-pc/ /first-thing-to-do-when-something-doesnt-work-on-windows/ 301
+/het-eerste-dat-je-moet-doen-als-er-iets-niet-werkt-op-je-pc /first-thing-to-do-when-something-doesnt-work-on-windows/ 301
+/hoe-maak-je-een-gratis-ssl-certificaat/ /creating-a-free-ssl-certificate/ 301
+/hoe-maak-je-een-gratis-ssl-certificaat /creating-a-free-ssl-certificate/ 301
+/projecten/yeweb/ /projects/weby/ 301
+/projecten/yeweb /projects/weby/ 301
+/projecten/:slug/ /projects/:slug 301
+/projecten/:slug /projects/:slug 301
