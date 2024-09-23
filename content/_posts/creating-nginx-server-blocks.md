@@ -1,14 +1,14 @@
 ---
 template: post
-title: Nginx server blocks maken
-description: Deze guide toont hoe je een nginx server block maakt voor een PHP 8.1 applicatie.
+title: Creating nginx server blocks for a PHP application
+description: This guide contains an example nginx server block for a php application.
 date: 2021-07-23
 author: Yendric
 ---
 
-Deze guide toont hoe je een nginx server block maakt voor een PHP applicatie. Ik ga ervanuit dat PHP8.1 al geïnstalleerd is en je een [geldig SSL certificaat](/hoe-maak-je-een-gratis-ssl-certificaat/) hebt.
+This guide contains an example nginx server block for a php application. I'm assuming that PHP8.3 is already installed and that you have a [valid SSL certificate](/creating-a-free-ssl-certificate/) for your domain name.
 
-Plaats het volgende in `/etc/nginx/sites-available/<website>.conf`
+Now put the following configuration in `/etc/nginx/sites-available/<website>.conf`
 
 ```nginx
 server {
@@ -56,7 +56,7 @@ server {
 
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+        fastcgi_pass unix:/run/php/php8.3-fpm.sock;
         fastcgi_index index.php;
         include fastcgi_params;
         fastcgi_param PHP_VALUE "upload_max_filesize = 100M \n post_max_size=100M";
@@ -77,11 +77,12 @@ server {
 }
 ```
 
-Het is handig om je sites-available aan je sites-enabled te linken.
-Om dat te doen doe je het volgende:
+Replace php8.3 with your version of php, and configure the root of your own website.
+
+It's handy to link your sites-available site to your sites-enabled site, you can do this as follows:
 
 ```bash
 sudo ln -s /etc/nginx/sites-available/<website>.conf /etc/nginx/sites-enabled/<website>.conf
 ```
 
-Tenslotte raad ik je aan om `server_tokens `in `nginx.conf` op `off `te zetten. Dit zorgt ervoor dat je nginx versie niet getoond wordt in je HTTP headers.
+Finally I recommend you to disable `server_tokens` inside `nginx.conf`. This way you won't be showing your nginx version to your visitors.
