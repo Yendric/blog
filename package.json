@@ -1,9 +1,14 @@
 {
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.4",
-    "tailwindcss": "^3.1.6"
+    "@yendric/geny": "^1.2.1",
+    "htmx-ext-preload": "2.1.2",
+    "htmx.org": "^2.0.10",
+    "tailwindcss": "^3.1.6",
+    "vite": "^7.1.0"
   },
   "scripts": {
-    "build": "tailwindcss build -i public/assets/style.css -o build/assets/style.css --minify"
+    "build": "geny build",
+    "dev": "geny watch --serve"
   }
 }

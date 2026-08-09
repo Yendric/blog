@@ -1,0 +1,4 @@
+vite:
+  enabled: true
+  buildCommand: pnpm vite build
+  devCommand: pnpm vite dev
