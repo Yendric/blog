@@ -12,3 +12,4 @@
 /projecten/yeweb /projects/weby/ 301
 /projecten/:slug/ /projects/:slug 301
 /projecten/:slug /projects/:slug 301
+/security.txt /.well-known/security.txt 301
