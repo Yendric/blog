@@ -1,0 +1,54 @@
+#!/usr/bin/env zsh
+# Opens VS Code on the machine the pane is showing on.
+zmodload zsh/net/socket
+
+self=${0:A}
+host=${CODE_SSH_HOST:-pc-wsl}
+
+# The real code, further down PATH
+real_code() {
+  local c
+  for c in ${(f)"$(whence -ap code)"}; do
+    [[ ${c:A} != $self ]] && { REPLY=$c; return }
+  done
+  return 1
+}
+
+alive() {
+  [[ -S $1 ]] && zsocket $1 2>/dev/null && exec {REPLY}>&-
+}
+
+if [[ -n $VSCODE_IPC_HOOK_CLI ]] && alive $VSCODE_IPC_HOOK_CLI; then
+  real_code && exec $REPLY "$@"
+fi
+
+owner=
+[[ -n $SHPOOL_SESSION_NAME ]] && owner=$(cat ~/.cache/pane/owner/$SHPOOL_SESSION_NAME 2>/dev/null)
+[[ -z $owner ]] && owner=${SSH_CONNECTION:+laptop}
+
+if [[ $owner != laptop ]]; then
+  real_code && exec $REPLY "$@"
+  print -u2 "code: VS Code not found"
+  exit 1
+fi
+
+# Sockets of VS Code servers started over SSH
+socks=()
+for env in $(grep -lz '^SSH_CONNECTION=' /proc/[0-9]*/environ 2>/dev/null); do
+  socks+=($(tr '\0' '\n' 2>/dev/null < $env | sed -n 's/^VSCODE_IPC_HOOK_CLI=//p'))
+done
+socks=(${^${(u)socks}}(N=))
+
+cli=(~/.vscode-server/{bin/*,cli/servers/*/server}/bin/remote-cli/code(N*om))
+for s in $socks; do
+  [[ -n $cli ]] && alive $s && VSCODE_IPC_HOOK_CLI=$s exec $cli[1] "$@"
+done
+
+# No window to reuse, so print a link that opens one
+dir=$PWD
+for a in "$@"; do
+  [[ $a != -* ]] && { dir=${a:A}; break }
+done
+url="vscode://vscode-remote/ssh-remote+$host${${${dir//\%/%25}// /%20}//\#/%23}"
+print -u2 "No VS Code window connected to $host, open:"
+printf '\e]8;;%s\e\\%s\e]8;;\e\\\n' $url $url

@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+# Runs in every pane: offers sessions worth reattaching to, otherwise starts a new shell.
+set -u
+trap 'exit 0' HUP
+
+export PANE_PATH=$PATH # shpool resets PATH, so new sessions get this one through forward_env
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-/run/user/$(id -u)}
+
+state=~/.cache/pane
+mkdir -p "$state/owner"
+exec 9>"$state/lock"
+if [[ -n ${SSH_CONNECTION:-} ]]; then me=laptop; else me=desktop; fi
+
+sessions() {
+  shpool list --json | jq -r '.sessions[] | [.name, .shell_pid, .status] | @tsv'
+}
+
+# What a shell is running, ignoring zsh's own helper processes
+running() {
+  ps -o comm=,args= --ppid "$1" 2>/dev/null | awk '$1 != "zsh" { $1 = ""; print substr($0, 2); exit }'
+}
+
+while true; do
+  [[ $(ps -o ppid= $$ | tr -d ' ') == "$PPID" ]] || exit 0
+  flock 9
+
+  last=$(cat "$state/last-cwd" 2>/dev/null)
+  [[ -d $last ]] || last=$HOME
+
+  menu=()
+  declare -A elsewhere=()
+  while IFS=$'\t' read -r name pid status; do
+    owner=$(cat "$state/owner/$name" 2>/dev/null)
+    [[ $status != Disconnected && $owner == "$me" ]] && continue
+
+    cmd=$(running "$pid")
+    if [[ -z $cmd ]]; then
+      if [[ $status == Disconnected ]]; then
+        shpool kill "$name" >/dev/null 2>&1
+        rm -f "$state/owner/$name"
+      fi
+      continue
+    fi
+
+    note=
+    if [[ $status != Disconnected ]]; then
+      elsewhere[$name]=1
+      note="  (open on ${owner:-other machine})"
+    fi
+    dir=$(readlink "/proc/$pid/cwd")
+    menu+=("$name"$'\t'"$(printf '%-20s %-30.30s %s%s' "$(basename "$dir")" "$cmd" "${dir/#$HOME/\~}" "$note")")
+  done < <(sessions)
+
+  name=
+  if ((${#menu[@]})); then
+    name=$(printf '%s\n' "${menu[@]}" "new"$'\t'"+ new shell in ${last/#$HOME/\~}" |
+      fzf --delimiter='\t' --with-nth=2 --reverse --height='~50%' --no-sort \
+          --prompt='session> ' --header='Enter: attach · Esc: new shell' | cut -f1)
+  fi
+
+  args=()
+  if [[ -z $name || $name == new ]]; then
+    name=pane-$(date +%m%d-%H%M%S)-$RANDOM
+    args=(-d "$last")
+  elif [[ -n ${elsewhere[$name]:-} ]]; then
+    args=(-f)
+  fi
+  echo "$me" > "$state/owner/$name"
+
+  # Hold the lock until the session is claimed, so panes restored at the same time don't race for it
+  ( sleep 1; flock -u 9 ) &
+  shpool attach "${args[@]}" "$name" 9>&-
+  status=$?
+
+  # The shell exited: close the pane. Detached: show the menu again.
+  pid=$(shpool list --json | jq -r --arg n "$name" '.sessions[] | select(.name == $n) | .shell_pid')
+  if [[ -z $pid ]] || ! kill -0 "$pid" 2>/dev/null; then
+    rm -f "$state/owner/$name"
+    exit 0
+  fi
+  ((status != 0)) && sleep 1
+done
