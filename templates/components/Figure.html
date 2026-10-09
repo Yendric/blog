@@ -1,0 +1,8 @@
+<figure class="not-prose my-6{{ with .Props.class }} {{ . }}{{ end }}">
+  {{ if hasSuffix ".mp4" .Props.src }}
+  <video class="w-full h-auto rounded-lg border border-gray-200 dark:border-gray-700" src="{{ .Props.src }}"{{ with .Props.poster }} poster="{{ . }}"{{ end }}{{ with .Props.width }} width="{{ . }}"{{ end }}{{ with .Props.height }} height="{{ . }}"{{ end }} autoplay muted loop playsinline controls preload="metadata"></video>
+  {{ else }}
+  <img class="w-full h-auto rounded-lg border border-gray-200 dark:border-gray-700" src="{{ .Props.src }}" alt="{{ .Props.alt }}"{{ with .Props.width }} width="{{ . }}"{{ end }}{{ with .Props.height }} height="{{ . }}"{{ end }} loading="lazy">
+  {{ end }}
+  {{ with .Children }}<figcaption class="mt-2 text-sm text-gray-500 dark:text-gray-400 [&_a]:underline">{{ . }}</figcaption>{{ end }}
+</figure>
