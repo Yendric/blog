@@ -1,2 +1,6 @@
 /assets/*
   Cache-Control: max-age=315360000
+/assets/files/*
+  ! Cache-Control
+  Cache-Control: max-age=3600
+  Content-Disposition: attachment
