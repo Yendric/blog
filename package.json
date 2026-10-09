@@ -1,14 +1,22 @@
 {
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.4",
-    "@yendric/geny": "^1.2.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "5.2.0",
+    "@yendric/geny": "^1.5.1",
     "htmx-ext-preload": "2.1.2",
     "htmx.org": "^2.0.10",
     "tailwindcss": "^3.1.6",
+    "typescript": "5.9.3",
     "vite": "^7.1.0"
   },
   "scripts": {
     "build": "geny build",
     "dev": "geny watch --serve"
+  },
+  "dependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
   }
 }
