@@ -4,6 +4,10 @@ title: Creating nginx server blocks for a PHP application
 description: This guide contains an example nginx server block for a php application.
 date: 2021-07-23
 author: Yendric
+tags:
+  - nginx
+  - PHP
+  - Linux
 ---
 
 This guide contains an example nginx server block for a php application. I'm assuming that PHP8.3 is already installed and that you have a [valid SSL certificate](/creating-a-free-ssl-certificate/) for your domain name.

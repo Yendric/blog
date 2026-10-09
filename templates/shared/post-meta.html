@@ -1,0 +1,29 @@
+{{ define "post-date" }}{{ toDate "2006-01-02" .MetaData.date | date "2 January 2006" }}{{ end }}
+
+{{ define "post-stats" -}}
+{{ $words := len (regexSplit "\\s+" (trim (stripTags .Content)) -1) -}}
+{{ $words }} words · {{ max 1 (div (add $words 199) 200) }} min read
+{{- end }}
+
+{{ define "post-meta" }}
+<time datetime="{{ .MetaData.date }}">{{ template "post-date" . }}</time> · {{ template "post-stats" . }}
+{{ end }}
+
+{{ define "post-tags" }}
+{{ if .MetaData.tags }}
+<span class="flex flex-wrap gap-1.5">
+  {{ range .MetaData.tags }}<span class="rounded-full bg-gray-100 dark:bg-gray-700 px-2.5 py-0.5 text-xs text-gray-600 dark:text-gray-300">{{ . }}</span>{{ end }}
+</span>
+{{ end }}
+{{ end }}
+
+{{ define "post-row" }}
+<li class="border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+  <a href="{{ .Url }}" class="group flex flex-col gap-1 py-5">
+    <span class="text-lg font-semibold text-gray-900 dark:text-white group-hover:underline">{{ .MetaData.title }}</span>
+    <span class="text-sm text-gray-400 dark:text-gray-500 tabular-nums">{{ template "post-meta" . }}</span>
+    <span class="text-gray-600 dark:text-gray-300">{{ .Content | stripTags | truncate }}</span>
+    {{ template "post-tags" . }}
+  </a>
+</li>
+{{ end }}

@@ -4,6 +4,10 @@ title: Using nginx with HTTP3 Quic
 description: This short guide shows you how you can install the new nginx version with http3 module and configure it.
 date: 2023-06-27
 author: Yendric
+tags:
+  - nginx
+  - HTTP/3
+  - Linux
 ---
 
 Hello there!

@@ -4,6 +4,10 @@ title: Creating a free SSL / TLS certificate.
 description: In this post I explain how to use certbot to get a free Let's Encrypt SSL certificate.
 date: 2021-07-23
 author: Yendric
+tags:
+  - SSL
+  - nginx
+  - Linux
 ---
 
 This tutorial expects you to have an nginx webserver running on a linux system compatible with certbot. The post is written for Debian systems, but will be analogous for other Linux based operating systems.

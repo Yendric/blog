@@ -4,6 +4,8 @@ title: First thing to do when something doesn't work on Windows
 description: In this post I explain how you can use the DISM and sfc tools to solve problems with your Windows installation.
 date: 2021-07-24
 author: Yendric
+tags:
+  - Windows
 ---
 
 In this post I explain how you can use the DISM and sfc tools to solve problems with your Windows installation.
