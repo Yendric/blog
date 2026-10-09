@@ -4,6 +4,11 @@ title: Audy
 description: Audy is a Win32 application that enables you to modify your audio output device using a keyboard shortcut.
 date: 2022-03-24
 author: Yendric
+order: 3
+github: https://github.com/Yendric/audy
+tags:
+  - C
+  - Win32
 ---
 
 Audy is a Win32 application that enables you to modify your audio output device using a keyboard shortcut. The default shortcut is Shift+Alt+ArrowUp. I mainly wrote this program to learn a bit more about C and the inner workings of the Win32 API.

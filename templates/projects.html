@@ -1,10 +1,42 @@
 {{ template "header.html" .}}
-<main class="container xl:max-w-3xl mx-auto prose dark:prose-invert">
-  {{ .Content }}
-  <ul>
-    {{range .Collections.project }}
-    <li><a href="{{ .Url }}">{{ .MetaData.title }}</a></li>
-    {{end}}
+<main class="container xl:max-w-3xl mx-auto w-full">
+  <div class="prose dark:prose-invert max-w-none">
+    {{ .Content }}
+  </div>
+  {{ $projects := .Collections.project }}
+  <ul class="mt-10 grid gap-4 sm:grid-cols-2">
+    {{ range $i, $unused := $projects }}
+    {{ range $p := $projects }}
+    {{ if eq $p.MetaData.order $i }}
+    <li
+      class="relative flex flex-col gap-1.5 rounded-lg border border-gray-200 dark:border-gray-700 p-5 hover:border-gray-400 dark:hover:border-gray-500">
+      <span class="flex items-baseline justify-between gap-4">
+        <a href="{{ $p.Url }}"
+          class="font-semibold text-gray-900 dark:text-white hover:underline after:absolute after:inset-0">{{ $p.MetaData.title }}</a>
+        <span class="text-sm text-gray-400 dark:text-gray-500 tabular-nums shrink-0">{{ substr 0 4 $p.MetaData.date }}</span>
+      </span>
+      <p class="text-sm text-gray-600 dark:text-gray-300">{{ $p.MetaData.description }}</p>
+      <span class="mt-auto flex items-end justify-between gap-4 pt-3">
+        <span class="flex flex-wrap gap-1.5">
+          {{ range $p.MetaData.tags }}
+          <span class="rounded-full bg-gray-100 dark:bg-gray-700 px-2.5 py-0.5 text-xs text-gray-600 dark:text-gray-300">{{ . }}</span>
+          {{ end }}
+        </span>
+        <span class="relative z-10 flex gap-3 shrink-0">
+          {{ if $p.MetaData.link }}
+          <a href="{{ $p.MetaData.link }}" target="_blank"
+            class="text-sm text-gray-400 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">Visit</a>
+          {{ end }}
+          {{ if $p.MetaData.github }}
+          <a href="{{ $p.MetaData.github }}" target="_blank"
+            class="text-sm text-gray-400 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">GitHub</a>
+          {{ end }}
+        </span>
+      </span>
+    </li>
+    {{ end }}
+    {{ end }}
+    {{ end }}
   </ul>
 </main>
 {{ template "footer.html" .}}

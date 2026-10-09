@@ -4,6 +4,11 @@ title: Weby CMS
 description: Weby CMS is a headless content management system written in PHP and Vue.
 date: 2021-07-23
 author: Yendric
+order: 4
+tags:
+  - PHP
+  - Laravel
+  - Vue
 ---
 
 Weby CMS is a headless content management system written in PHP and Vue.
