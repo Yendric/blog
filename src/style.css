@@ -19,3 +19,9 @@ a[target="_blank"]:not(.noicon)::after{
 .prose > h1, .prose > * h1 {
   @apply font-semibold text-5xl border-b mb-4 border-gray-200 dark:border-gray-700 pb-6;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

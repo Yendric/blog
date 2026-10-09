@@ -1,0 +1,10 @@
+{{ define "toc" }}
+<ul class="space-y-2">
+  {{ range . }}
+  <li>
+    <a href="#{{ .ID }}" class="block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white aria-[current=location]:font-medium aria-[current=location]:text-gray-900 dark:aria-[current=location]:text-white">{{ .HTML }}</a>
+    {{ if .Children }}<div class="mt-2 pl-4">{{ template "toc" .Children }}</div>{{ end }}
+  </li>
+  {{ end }}
+</ul>
+{{ end }}

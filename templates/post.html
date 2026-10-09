@@ -1,12 +1,26 @@
 {{ template "header.html" .}}
-<article class="container xl:max-w-3xl mx-auto prose dark:prose-invert">
-  <h1>{{ .MetaData.title }}</h1>
-  {{ .Content }}
-  <hr class="my-2" />
-  <script src="https://giscus.app/client.js" data-repo="Yendric/blog" data-repo-id="R_kgDOHrZXhw"
-    data-category="Blog posts" data-category-id="DIC_kwDOHrZXh84CQS0c" data-mapping="pathname"
-    data-reactions-enabled="0" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme"
-    data-lang="nl" data-loading="lazy" crossorigin="anonymous" defer>
-    </script>
-</article>
+<div class="container mx-auto xl:max-w-5xl xl:grid xl:grid-cols-[minmax(0,1fr)_14rem] xl:gap-16">
+  <article class="prose dark:prose-invert mx-auto xl:mx-0 xl:max-w-none prose-headings:scroll-mt-8">
+    <h1>{{ .MetaData.title }}</h1>
+    <div class="not-prose mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+      <span class="text-gray-400 dark:text-gray-500 tabular-nums">{{ template "post-meta" . }}</span>
+      {{ template "post-tags" . }}
+    </div>
+    {{ .Content }}
+    <hr class="my-2" />
+    <script src="https://giscus.app/client.js" data-repo="Yendric/blog" data-repo-id="R_kgDOHrZXhw"
+      data-category="Blog posts" data-category-id="DIC_kwDOHrZXh84CQS0c" data-mapping="pathname"
+      data-reactions-enabled="0" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme"
+      data-lang="en" data-loading="lazy" crossorigin="anonymous" defer>
+      </script>
+  </article>
+  {{ with .Headings.Between 2 3 }}
+  <aside class="hidden xl:block">
+    <nav class="sticky top-8 max-w-60 text-sm" aria-label="On this page">
+      <p class="mb-3 font-semibold text-gray-900 dark:text-white">On this page</p>
+      {{ template "toc" . }}
+    </nav>
+  </aside>
+  {{ end }}
+</div>
 {{ template "footer.html" .}}
