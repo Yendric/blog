@@ -28,7 +28,7 @@ I started with figuring out why the motors were spinning and how I could get the
 
 So there are three possibilities: (a) the CPU is pulling all motors low, (b) some relays are stuck closed, (c) some triacs have failed short. 
 
-I started by cleaning the relays and fixing some bent motor arms. Now two more motors (that originally were'nt doing anything) also started spinning, so all 5 were now stuck spinning. A part of me had hoped that the two non-moving ones were actually *good*, and that the CPU was able to "home" them but not the others. Anyways.. progress, I guess? I also measured the triacs, they looked fine as well.
+I started by cleaning the relays and fixing some bent motor arms. Now two more motors (that originally weren't doing anything) also started spinning, so all 5 were now stuck spinning. A part of me had hoped that the two non-moving ones were actually *good*, and that the CPU was able to "home" them but not the others. Anyways.. progress, I guess? I also measured the triacs, they looked fine as well.
 
 <Figure src="/assets/img/pr134.webp" width="1400" height="1106" class="clear-both mx-auto max-w-md" alt="The PR134 motor driver board, with five relays along the bottom and five triacs along the top">
 The PR134 motor driver board: one relay (bottom) and triac (top) per motor
