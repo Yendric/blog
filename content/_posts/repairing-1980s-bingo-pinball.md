@@ -37,7 +37,7 @@ The PR134 motor driver board: one relay (bottom) and triac (top) per motor
 <FileDownload src="/assets/img/pr134_schem.png" lang="png" />
 
 ## The CPU
-Since the CPU board is what controls this motor board, this is where I looked next. All logic on this machine is controlled by an intel 8085 processor. It has two 5101 chips used as persistent RAM for stats, and three 8155 chips for I/O, (stack) RAM and timers. It thus uses memory mapped IO. The program itself is stored on 5 ROM chips, storing 2K each. The board uses 74LS138 decoders to make the address lines switch between the right ROM & RAM chips. It also has a lot of 7406 inverters, used as a current amplifier for all control lines (for example going to the magic motors and to all the lights).
+Since the CPU board is what controls this motor board, this is where I looked next. All logic on this machine is controlled by an intel 8085 processor. It has two 5101 chips used as persistent RAM for stats, and three 8155 chips for I/O, (stack) RAM and timers. It thus uses memory mapped IO. The program itself is stored on 5 ROM chips, storing 2K each. The board uses 74LS138 decoders to decode the address and enable the right ROM or RAM chip. It also has a lot of 7406 inverters, used as a current amplifier for all control lines (for example going to the magic motors and to all the lights).
 
 <FileDownload src="/assets/files/cpu_schem.zip" lang="zip" />
 
@@ -77,7 +77,7 @@ Back in the machine, with the clock pins wired to the Arduino
 </Figure>
 
 ## Roms A B C ~~?~~ E, Miss Americana?
-Unfortunately, the codes on the screen weren't helpful yet as I hadn't yet found a manual for this machine. Either way I started with reading out the ROMs. I bought a T48 chip reader and read out the ROMs. All of them read out fine, except for the fourth one, which gave different values across the chip every time it was read out.
+Unfortunately, the codes on the screen weren't helpful yet as I hadn't yet found a manual for this machine. Either way, I bought a T48 chip reader and started by reading out the ROMs. All of them read out fine, except for the fourth one, which gave different values across the chip every time it was read out.
 
 I tried everything: freezing the chip, heating it. This would help stabilize some bits, but not enough to be able to reconstruct it. I did over 15000 reads of the chip, hoping to find some kind of statistical evidence for the real values. I even had (the then recently released) Fable 5 look at it, attempting to reconstruct the binary from the statistics and possible legal assembly instructions. It came up with something it was 90% confident in, but ended up being completely wrong.
 
@@ -88,7 +88,7 @@ These 5 ROMs also told me Fable 5's reconstruction wasn't identical, with about 
 <FileDownload src="/assets/files/manual-miss_americana.pdf" lang="pdf" />
 
 ### Random generator? 
-When I first opened the machine, I also found a taped up PCB labeled **PR138** Random Generator. I thought this would be quite essential, as a gambling machine needs randomness. I plugged it in at the start, before all the other debugging (reversed, as its connector was put on the wrong way), it got quite hot, but didn't change anything about the behaviour of the machine. Analyzing the ROMs, I found out this is actually not a random generator at all, but rather appears to serve as an anti-copy device. Without it solving a small puzzle every once in a while, the machine makes itself crash. I nopped it out, and never worried about it again.
+When I first opened the machine, I also found a taped up PCB labeled **PR147** Random Generator. I thought this would be quite essential, as a gambling machine needs randomness. I plugged it in at the start, before all the other debugging (reversed, as its connector was put on the wrong way), it got quite hot, but didn't change anything about the behaviour of the machine. Analyzing the ROMs, I found out this is actually not a random generator at all, but rather appears to serve as an anti-copy device. Without it solving a small puzzle every once in a while, the machine makes itself crash. I nopped it out, and never worried about it again.
 
 ## Getting it to talk
 When I first booted the machine with the new ROMs, I was greeted with an error telling me it was upset that its persistent RAM had been reset. According to the manual this happens when the magic bytes it writes to its persistent RAM are gone. Rebooting should fix it, as the code for the error also writes them again.
@@ -113,7 +113,7 @@ Immediately an issue became apparent: one of the 5101 RAM chips was broken. They
 Next, I started writing to the I/O addresses set up for the 8155 chips. Its ports are hooked up to the 7406 inverters, which then go to lights, motors etc. I should be able to control every motor and light row, and I started with the magic motors. Measuring with my scope, I could see nothing was happening at the output port. Measuring a little further I found the right chip wasn't even being enabled. The board uses 74LS138s to decode the address and select the correct 8155 chip (there are three), but one of its outputs was clearly broken. I replaced it and voila, the signal made it to the inverters (and the assumed floating causing the spinning from the start was fixed). I could finally enable and disable some motors at my command, by writing zeroes and ones to their designated bits. Not all motors worked, because a lot of outputs on the inverters were also broken. So I had to replace those as well.
 
 ### I'm pressing the damn button
-After the motor outputs were now fixed, I started testing the inputs. Going over each and every single switch, and expecting its corresponding bit to flip when I press it. The switches work through a scan circuit, where the switches are setup in a matrix with diodes, and rows and columns are pulsed to find all combinations that are on. To isolate the logic ground and button ground, optocouplers are used. 
+Now that the motor outputs were fixed, I started testing the inputs. Going over each and every single switch, and expecting its corresponding bit to flip when I press it. The switches work through a scan circuit, where the switches are setup in a matrix with diodes, and rows and columns are pulsed to find all combinations that are on. To isolate the logic ground and button ground, optocouplers are used. 
 
 It turned out one of these was broken, but luckily I had a replacement that came with my Arduino Uno kit. Many other individual switches weren't working because of bad contacts. I had to resolder every single switch on the playfield, rebuild some switches in the motor mechanism, bend the motor lifter back into place (it was stuck) and relube the motor lifter switch (it detects that a ball is at the bottom of the lift). Also the collect reward switch was wrongly wired, someone had worked on this before. Great, all buttons work now, what's next?
 
@@ -137,7 +137,7 @@ Turning on the machine also showed some lights, but then I suddenly heard a loud
 The replaced darlingtons, a repaired trace and the new battery
 </Figure>
 
-This was the first time I could play a proper game, but the lights were still acting up, with many of them still not working. The lights circuit works very similarly to the scan circuit. Its a matrix with rows, columns and diodes, and the CPU pulses over all combinations it wants to turn on. The CPU pulls one side high and the other low, so current can flow through the bulbs. Now obviously our little I/O ports or even inverters cannot supply the multiple amps of power these lights need. That's why there are several amplification stages, including darlingtons on the CPU board, and big power transistors on the lamp board. I replaced all darlingtons on the CPU board, as many measured weirdly and they were all green from the battery corrosion. I also had to repair some damaged traces around the area (one column was flickering) and 3 of the power transistors needed replacing (measured short between C&E).
+This was the first time I could play a proper game, but the lights were still acting up, with many of them still not working. The lights circuit works very similarly to the scan circuit. Its a matrix with rows, columns and diodes, and the CPU pulses over all combinations it wants to turn on. The CPU pulls one side high and the other low, so current can flow through the bulbs. Now obviously our little I/O ports or even inverters cannot supply the multiple amps of current these lights need. That's why there are several amplification stages, including darlingtons on the CPU board, and big power transistors on the lamp board. I replaced all darlingtons on the CPU board, as many measured weirdly and they were all green from the battery corrosion. I also had to repair some damaged traces around the area (one column was flickering) and 3 of the power transistors needed replacing (measured short between C&E).
 
 <Figure src="/assets/img/lamp-power-transistors.webp" width="1400" height="942" class="clear-both mx-auto max-w-md" alt="The lamp board with a long black heatsink holding a row of eight metal-can power transistors">
 The power transistors on the lamp board
@@ -145,7 +145,7 @@ The power transistors on the lamp board
 
 Everything now works, perfectly. The machine starts, I can add credits, play a game, move the magic lines, and obviously win all credits I put in back (sometimes).
 
-## Piece of mind: new filter caps
+## Peace of mind: new filter caps
 
 One more thing I wanted to do, so I can sleep soundly, is replacing the old *huge* filter capacitors. The old ones were of the type that stand up without a PCB, which is a lot more expensive than regular ones you put in a PCB. I therefore 3D printed a small mount for my new capacitors to sit in, and hooked them up.
 
