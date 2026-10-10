@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 486" width="300" height="486" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13">
+<style>
+.body{fill:#f3f4f6;stroke:#374151;stroke-width:2}.pin{fill:#9ca3af}.num{fill:#6b7280;font-size:11px}
+.t{fill:#111827}.pwr{fill:#dc2626}.clk{fill:#d97706}.rst{fill:#9333ea}.bus{fill:#2563eb}.ctl{fill:#059669}
+.ot{stroke:#111827}.opwr{stroke:#dc2626}.orst{stroke:#9333ea}.octl{stroke:#059669}.title{fill:#6b7280;font-size:22px;font-weight:bold;letter-spacing:4px}
+@media (prefers-color-scheme:dark){.body{fill:#1f2937;stroke:#9ca3af}.pin{fill:#6b7280}.num{fill:#9ca3af}.t{fill:#f3f4f6}
+.pwr{fill:#f87171}.clk{fill:#fbbf24}.rst{fill:#c084fc}.bus{fill:#60a5fa}.ctl{fill:#34d399}.title{fill:#9ca3af}.ot{stroke:#f3f4f6}.orst{stroke:#c084fc}.octl{stroke:#34d399}}
+</style>
+<rect class="body" x="50" y="30" width="200" height="392" rx="6"/>
+<path d="M136.0 30 a14 14 0 0 0 28 0" fill="none" stroke-width="2" class="body"/>
+<text class="title" x="150.0" y="226.0" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 150.0 226.0)">8085</text>
+<rect class="pin" x="36" y="43.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="47" text-anchor="end" dominant-baseline="central">1</text>
+<text class="clk" x="58" y="47" text-anchor="start" dominant-baseline="central">X1</text>
+<rect class="pin" x="36" y="62.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="66" text-anchor="end" dominant-baseline="central">2</text>
+<text class="clk" x="58" y="66" text-anchor="start" dominant-baseline="central">X2</text>
+<rect class="pin" x="36" y="81.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="85" text-anchor="end" dominant-baseline="central">3</text>
+<text class="rst" x="58" y="85" text-anchor="start" dominant-baseline="central">RESET OUT</text>
+<rect class="pin" x="36" y="100.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="104" text-anchor="end" dominant-baseline="central">4</text>
+<text class="t" x="58" y="104" text-anchor="start" dominant-baseline="central">SOD</text>
+<rect class="pin" x="36" y="119.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="123" text-anchor="end" dominant-baseline="central">5</text>
+<text class="t" x="58" y="123" text-anchor="start" dominant-baseline="central">SID</text>
+<rect class="pin" x="36" y="138.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="142" text-anchor="end" dominant-baseline="central">6</text>
+<text class="t" x="58" y="142" text-anchor="start" dominant-baseline="central">TRAP</text>
+<rect class="pin" x="36" y="157.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="161" text-anchor="end" dominant-baseline="central">7</text>
+<text class="t" x="58" y="161" text-anchor="start" dominant-baseline="central">RST 7.5</text>
+<rect class="pin" x="36" y="176.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="180" text-anchor="end" dominant-baseline="central">8</text>
+<text class="t" x="58" y="180" text-anchor="start" dominant-baseline="central">RST 6.5</text>
+<rect class="pin" x="36" y="195.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="199" text-anchor="end" dominant-baseline="central">9</text>
+<text class="t" x="58" y="199" text-anchor="start" dominant-baseline="central">RST 5.5</text>
+<rect class="pin" x="36" y="214.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="218" text-anchor="end" dominant-baseline="central">10</text>
+<text class="t" x="58" y="218" text-anchor="start" dominant-baseline="central">INTR</text>
+<rect class="pin" x="36" y="233.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="237" text-anchor="end" dominant-baseline="central">11</text>
+<text class="t" x="58" y="237" text-anchor="start" dominant-baseline="central">INTA</text><line class="ot" x1="58.0" x2="89.2" y1="231" y2="231" stroke-width="1.3"/>
+<rect class="pin" x="36" y="252.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="256" text-anchor="end" dominant-baseline="central">12</text>
+<text class="bus" x="58" y="256" text-anchor="start" dominant-baseline="central">AD0</text>
+<rect class="pin" x="36" y="271.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="275" text-anchor="end" dominant-baseline="central">13</text>
+<text class="bus" x="58" y="275" text-anchor="start" dominant-baseline="central">AD1</text>
+<rect class="pin" x="36" y="290.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="294" text-anchor="end" dominant-baseline="central">14</text>
+<text class="bus" x="58" y="294" text-anchor="start" dominant-baseline="central">AD2</text>
+<rect class="pin" x="36" y="309.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="313" text-anchor="end" dominant-baseline="central">15</text>
+<text class="bus" x="58" y="313" text-anchor="start" dominant-baseline="central">AD3</text>
+<rect class="pin" x="36" y="328.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="332" text-anchor="end" dominant-baseline="central">16</text>
+<text class="bus" x="58" y="332" text-anchor="start" dominant-baseline="central">AD4</text>
+<rect class="pin" x="36" y="347.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="351" text-anchor="end" dominant-baseline="central">17</text>
+<text class="bus" x="58" y="351" text-anchor="start" dominant-baseline="central">AD5</text>
+<rect class="pin" x="36" y="366.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="370" text-anchor="end" dominant-baseline="central">18</text>
+<text class="bus" x="58" y="370" text-anchor="start" dominant-baseline="central">AD6</text>
+<rect class="pin" x="36" y="385.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="389" text-anchor="end" dominant-baseline="central">19</text>
+<text class="bus" x="58" y="389" text-anchor="start" dominant-baseline="central">AD7</text>
+<rect class="pin" x="36" y="404.5" width="14" height="7" rx="1"/>
+<text class="num" x="30" y="408" text-anchor="end" dominant-baseline="central">20</text>
+<text class="pwr" x="58" y="408" text-anchor="start" dominant-baseline="central">VSS</text>
+<rect class="pin" x="250" y="43.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="47" dominant-baseline="central">40</text>
+<text class="pwr" x="242" y="47" text-anchor="end" dominant-baseline="central">VCC</text>
+<rect class="pin" x="250" y="62.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="66" dominant-baseline="central">39</text>
+<text class="t" x="242" y="66" text-anchor="end" dominant-baseline="central">HOLD</text>
+<rect class="pin" x="250" y="81.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="85" dominant-baseline="central">38</text>
+<text class="t" x="242" y="85" text-anchor="end" dominant-baseline="central">HLDA</text>
+<rect class="pin" x="250" y="100.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="104" dominant-baseline="central">37</text>
+<text class="clk" x="242" y="104" text-anchor="end" dominant-baseline="central">CLK OUT</text>
+<rect class="pin" x="250" y="119.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="123" dominant-baseline="central">36</text>
+<text class="rst" x="242" y="123" text-anchor="end" dominant-baseline="central">RESET IN</text><line class="orst" x1="179.6" x2="242.0" y1="117" y2="117" stroke-width="1.3"/>
+<rect class="pin" x="250" y="138.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="142" dominant-baseline="central">35</text>
+<text class="ctl" x="242" y="142" text-anchor="end" dominant-baseline="central">READY</text>
+<rect class="pin" x="250" y="157.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="161" dominant-baseline="central">34</text>
+<text class="ctl" x="242" y="161" text-anchor="end" dominant-baseline="central">IO/M</text><line class="octl" x1="234.2" x2="242.0" y1="155" y2="155" stroke-width="1.3"/>
+<rect class="pin" x="250" y="176.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="180" dominant-baseline="central">33</text>
+<text class="ctl" x="242" y="180" text-anchor="end" dominant-baseline="central">S1</text>
+<rect class="pin" x="250" y="195.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="199" dominant-baseline="central">32</text>
+<text class="ctl" x="242" y="199" text-anchor="end" dominant-baseline="central">RD</text><line class="octl" x1="226.4" x2="242.0" y1="193" y2="193" stroke-width="1.3"/>
+<rect class="pin" x="250" y="214.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="218" dominant-baseline="central">31</text>
+<text class="ctl" x="242" y="218" text-anchor="end" dominant-baseline="central">WR</text><line class="octl" x1="226.4" x2="242.0" y1="212" y2="212" stroke-width="1.3"/>
+<rect class="pin" x="250" y="233.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="237" dominant-baseline="central">30</text>
+<text class="ctl" x="242" y="237" text-anchor="end" dominant-baseline="central">ALE</text>
+<rect class="pin" x="250" y="252.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="256" dominant-baseline="central">29</text>
+<text class="ctl" x="242" y="256" text-anchor="end" dominant-baseline="central">S0</text>
+<rect class="pin" x="250" y="271.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="275" dominant-baseline="central">28</text>
+<text class="bus" x="242" y="275" text-anchor="end" dominant-baseline="central">A15</text>
+<rect class="pin" x="250" y="290.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="294" dominant-baseline="central">27</text>
+<text class="bus" x="242" y="294" text-anchor="end" dominant-baseline="central">A14</text>
+<rect class="pin" x="250" y="309.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="313" dominant-baseline="central">26</text>
+<text class="bus" x="242" y="313" text-anchor="end" dominant-baseline="central">A13</text>
+<rect class="pin" x="250" y="328.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="332" dominant-baseline="central">25</text>
+<text class="bus" x="242" y="332" text-anchor="end" dominant-baseline="central">A12</text>
+<rect class="pin" x="250" y="347.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="351" dominant-baseline="central">24</text>
+<text class="bus" x="242" y="351" text-anchor="end" dominant-baseline="central">A11</text>
+<rect class="pin" x="250" y="366.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="370" dominant-baseline="central">23</text>
+<text class="bus" x="242" y="370" text-anchor="end" dominant-baseline="central">A10</text>
+<rect class="pin" x="250" y="385.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="389" dominant-baseline="central">22</text>
+<text class="bus" x="242" y="389" text-anchor="end" dominant-baseline="central">A9</text>
+<rect class="pin" x="250" y="404.5" width="14" height="7" rx="1"/>
+<text class="num" x="270" y="408" dominant-baseline="central">21</text>
+<text class="bus" x="242" y="408" text-anchor="end" dominant-baseline="central">A8</text>
+<rect class="pwr" x="36.5" y="442" width="12" height="12" rx="2"/>
+<text class="t" x="54.5" y="448" dominant-baseline="central">Power</text>
+<rect class="clk" x="121.5" y="442" width="12" height="12" rx="2"/>
+<text class="t" x="139.5" y="448" dominant-baseline="central">Clock</text>
+<rect class="rst" x="206.5" y="442" width="12" height="12" rx="2"/>
+<text class="t" x="224.5" y="448" dominant-baseline="central">Reset</text>
+<rect class="bus" x="28.30000000000001" y="466" width="12" height="12" rx="2"/>
+<text class="t" x="46.30000000000001" y="472" dominant-baseline="central">Address/data</text>
+<rect class="ctl" x="167.9" y="466" width="12" height="12" rx="2"/>
+<text class="t" x="185.9" y="472" dominant-baseline="central">Bus control</text>
+</svg>
