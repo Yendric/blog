@@ -2,8 +2,8 @@
 {{ $binary := or (hasSuffix ".zip" .Props.src) (hasSuffix ".pdf" .Props.src) (hasSuffix ".png" .Props.src) (hasSuffix ".jpg" .Props.src) (hasSuffix ".jpeg" .Props.src) (hasSuffix ".webp" .Props.src) }}
 <div class="not-prose my-6 flex flex-wrap items-center gap-4 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
   <svg class="h-8 w-8 shrink-0 text-gray-400 dark:text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m10 13-2 2 2 2m4-4 2 2-2 2"/></svg>
-  <div class="min-w-0 flex-1">
-    <div class="font-mono font-semibold text-gray-900 dark:text-white">{{ $f.Name }}</div>
+  <div class="min-w-0 flex-1 basis-48">
+    <div class="font-mono font-semibold text-gray-900 dark:text-white break-all">{{ $f.Name }}</div>
     <div class="text-sm text-gray-500 dark:text-gray-400 tabular-nums">{{ with .Props.lang }}{{ . }} · {{ end }}{{ if not $binary }}{{ $f.Lines }} lines · {{ end }}{{ $f.Size }}</div>
   </div>
   <a href="{{ .Props.src }}" download hx-boost="false" class="inline-flex items-center gap-2 rounded-lg border border-gray-200 dark:border-gray-700 px-4 py-2 font-medium text-gray-900 dark:text-white hover:border-gray-400 dark:hover:border-gray-500">
