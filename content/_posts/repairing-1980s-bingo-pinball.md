@@ -4,6 +4,7 @@ title: Repairing a 1980s solid state bingo pinball machine
 description: In this blogpost I explain how I successfully repaired a 1980s WIMI Miss Bonus Bingo pinball machine, one of the earlier models with digital electronics. 
 date: 2026-10-10
 author: Yendric
+image: /assets/img/miss-bonus.webp
 tags:
   - Electronics
   - Tinkering

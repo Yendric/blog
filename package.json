@@ -12,7 +12,7 @@
     "vite": "^7.1.0"
   },
   "scripts": {
-    "build": "geny build",
+    "build": "geny build && node scripts/sitemap.mjs",
     "dev": "geny watch --serve"
   },
   "dependencies": {

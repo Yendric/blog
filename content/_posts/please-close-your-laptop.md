@@ -4,6 +4,7 @@ title: Please, close your laptop
 description: Working with agents on your laptop can be tedious, as you can't close the lid when it's busy. Moreover, having multiple copies of your project on multiple machines you constantly switch between is annoying. In this post I explain how I dealt with this, by using shpool for persistent remote shell sessions and a small wrapper to allow reattaching when reopening.
 date: 2026-10-09
 author: Yendric
+image: /assets/img/close-laptop.webp
 tags:
   - terminal
   - shpool

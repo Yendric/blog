@@ -16,8 +16,17 @@ a[target="_blank"]:not(.noicon)::after{
   clip-path: padding-box inset(0.28125em 0);
 }
 
-.prose > h1, .prose > * h1 {
+.prose > h1, .prose > * h1, .home.prose > h2 {
   @apply font-semibold text-5xl border-b mb-4 border-gray-200 dark:border-gray-700 pb-6;
+}
+
+/* the homepage sections are h2s (the logo is its h1) but look like page titles */
+.home.prose > h2 {
+  @apply mt-0;
+}
+
+.home.prose > h2 + * {
+  margin-top: 1.25em;
 }
 
 @media (prefers-reduced-motion: no-preference) {
