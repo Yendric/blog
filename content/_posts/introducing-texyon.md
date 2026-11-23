@@ -76,7 +76,7 @@ The engine writes XDV (just like XeTeX), and after a replay only the pages from 
 
 Note that it is entirely possible that some edge cases are not drawn correctly yet by this fast preview rendering mechanism, so please report any issues you find. Full compiles using TeXyoN still go through `xdvipdfmx` and output has been validated on [over 9,000 documents](#will-my-documents-come-out-the-same).
 
-Put together, this is the time from a keystroke until the visible page is redrawn, median of 30 to 40 edits:
+Here's how long a keystroke takes until the visible page is redrawn (median of 30 to 40 edits):
 
 <Chart title="Keystroke to redrawn page" series={["TeXyoN"]} unit="ms"
 setup="Intel i9-12900K, 32 GB RAM, Ubuntu 24.04 on WSL2"
@@ -90,7 +90,7 @@ rows={[
 ["arxiv-1810.00868 (43 pages)", 21.21]
 ]} />
 
-A keystroke takes between 9 and 21 ms, whether the document has 16 pages or 408. What it costs depends on the page you are editing, not on the length of the document, which is why the TikZ slides of spectre are slower than a 400 page article.
+A keystroke takes between 9 and 21 ms. The 408 page article is even faster than my 16 page spectre slides, because the slides are full of TikZ.
 
 The browser runs the same engine compiled to WebAssembly, which is 1.2 to 1.5 times slower but still redraws within about 22 ms.
 
@@ -120,7 +120,7 @@ Some rungs don't make sense to drop, and are labeled as protected. This includes
 
 ### Autocomplete from the live engine
 
-Because the engine stays alive between edits, the client can also ask it what is defined. After a compile, TeXyoN lists every command the document can use at that point, with its number of arguments and whether the first one is optional. Autocomplete then knows every command your packages and your own `\newcommand`s defined, exactly as TeX sees them, without guessing from the source. You can easily request this in `@texyon/wasm` using `engine.commands()`. The VS Code extension does not support this yet.
+Because the engine stays alive between edits, the client can also ask it what is defined. After a compile, TeXyoN lists every command the document can use at that point, with its number of arguments and whether the first one is optional. Autocomplete then knows every command your packages and your own `\newcommand`s define. You can easily request this in `@texyon/wasm` using `engine.commands()`. The VS Code extension does not support this yet.
 
 ## Oxidizing TeX
 
@@ -292,10 +292,10 @@ rows={[
 
 ## Conclusion
 
-TeXyoN keeps XeTeX running between edits and rewinds to the closest snapshot before your change, so a keystroke costs milliseconds whether your document has 10 pages or 400. You can try it today in [VS Code](https://marketplace.visualstudio.com/items?itemName=texyon.texyon), build your own editor on top of [`@texyon/wasm`](https://www.npmjs.com/package/@texyon/wasm), or read the [source](https://github.com/texyon-org/texyon). If a document renders differently from what you expect, please open an issue.
+TeXyoN keeps XeTeX running between edits and rewinds to the closest snapshot before your change, so a keystroke costs milliseconds, even in long documents. You can try it today in [VS Code](https://marketplace.visualstudio.com/items?itemName=texyon.texyon), build your own editor on top of [`@texyon/wasm`](https://www.npmjs.com/package/@texyon/wasm), or read the [source](https://github.com/texyon-org/texyon). If a document renders differently from what you expect, please open an issue.
 
 I'm planning on actively maintaining TeXyoN, and will be keeping it up to date with the latest TeX Live releases. I have already done so up until TeX Live 2026. This is relatively straightforward since function names are mostly the same. The project we forked from, Tectonic, has not done so yet. Unfortunately, as the codebase has been entirely rewritten, these changes cannot easily be recontributed back to Tectonic. Since TeXyoN is based on XeTeX, and XeTeX is in maintenance mode, there shouldn't be too many features to keep up with, which makes maintaining the project easier.
 
 This does mean TeXyoN might miss out on some new features, like tagged PDFs. I'm considering adding some of these features myself, but this should not (yet) be taken as a guarantee. The main goal of TeXyoN is to provide a clean Rust implementation of TeX with live preview, and to experiment with many performance optimizations. The project is open source, so ideas and contributions are more than welcome!
 
-Next up are [references in the live preview](#getting-references-to-work) and more experiments on making TeX itself faster, which I will be writing about in future posts.
+Next I'm working on [references in the live preview](#getting-references-to-work), and on more speedups I'll write about later.
