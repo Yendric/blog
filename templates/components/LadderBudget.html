@@ -1,0 +1,48 @@
+{{- $plain := list 150 185 220 255 530 553 576 599 622 645 668 690 -}}
+{{- $protected := list 110 290 330 380 410 425 434 470 500 -}}
+{{- $keptPlain := list 185 255 530 553 576 599 622 645 668 690 -}}
+{{- $aqua := "stroke-[#1baf7a] dark:stroke-[#199e70]" -}}
+{{- $aquaFill := "fill-[#1baf7a] dark:fill-[#199e70]" -}}
+<figure class="not-prose my-8">
+  <div class="overflow-x-auto pb-1">
+    <svg class="block min-w-[44rem] w-full text-xs" viewBox="0 -8 720 184" role="img" aria-label="Over budget, the ladder drops unprotected rungs where they are densest, preferring old ones, and merges each dropped undo delta into the next rung. Rung 0, the horizon with the seven rungs before it, and the most recent rungs stay.">
+      <text x="0" y="70" class="fill-gray-500 dark:fill-gray-400">Over budget</text>
+      <line x1="110" x2="690" y1="74" y2="74" class="stroke-gray-300 dark:stroke-gray-600" />
+      {{- range $plain }}
+      <line x1="{{ . }}" x2="{{ . }}" y1="52" y2="74" stroke-width="2" class="{{ if or (eq . 150) (eq . 220) }}stroke-[#eb6834] dark:stroke-[#d95926]{{ else }}stroke-gray-400 dark:stroke-gray-500{{ end }}" />
+      {{- end }}
+      {{- range $protected }}
+      <line x1="{{ . }}" x2="{{ . }}" y1="52" y2="74" stroke-width="2" class="{{ $aqua }}" />
+      <circle cx="{{ . }}" cy="49" r="3" class="{{ $aquaFill }}" />
+      {{- end }}
+
+      <path d="M152 44c8-16 26-16 31-2" fill="none" stroke-width="1.5" class="stroke-[#eb6834] dark:stroke-[#d95926]" />
+      <path d="M179 37l4 6 3-7" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-[#eb6834] dark:stroke-[#d95926]" />
+      <text x="167" y="22" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300">drop, merge its Δ</text>
+
+      <line x1="446" x2="446" y1="40" y2="74" stroke-width="2" class="stroke-[#eb6834] dark:stroke-[#d95926]" />
+      <path d="M440 34h12l-6 8z" class="fill-[#eb6834] dark:fill-[#d95926]" />
+      <text x="438" y="40" text-anchor="end" class="fill-gray-700 dark:fill-gray-300">last edit</text>
+      <path d="M290 18v-6h210v6" fill="none" class="stroke-gray-400 dark:stroke-gray-500" />
+      <text x="395" y="8" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300">horizon + 7 before it</text>
+      <text x="500" y="30" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300">horizon</text>
+      <path d="M530 40v-6h160v6" fill="none" class="stroke-gray-400 dark:stroke-gray-500" />
+      <text x="610" y="24" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300">recent (tail)</text>
+
+      <text x="0" y="150" class="fill-gray-500 dark:fill-gray-400">After</text>
+      <line x1="110" x2="690" y1="154" y2="154" class="stroke-gray-300 dark:stroke-gray-600" />
+      {{- range $plain }}
+      <line x1="{{ . }}" x2="{{ . }}" y1="144" y2="154" stroke-width="1" stroke-dasharray="2 2" class="stroke-gray-300 dark:stroke-gray-700" />
+      {{- end }}
+      {{- range $keptPlain }}
+      <line x1="{{ . }}" x2="{{ . }}" y1="132" y2="154" stroke-width="2" class="stroke-gray-400 dark:stroke-gray-500" />
+      {{- end }}
+      {{- range $protected }}
+      <line x1="{{ . }}" x2="{{ . }}" y1="132" y2="154" stroke-width="2" class="{{ $aqua }}" />
+      <circle cx="{{ . }}" cy="129" r="3" class="{{ $aquaFill }}" />
+      {{- end }}
+      <text x="110" y="172" class="fill-gray-500 dark:fill-gray-400">rung 0</text>
+      <text x="690" y="172" text-anchor="end" class="fill-gray-500 dark:fill-gray-400">now</text>
+    </svg>
+  </div>
+</figure>

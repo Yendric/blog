@@ -1,0 +1,32 @@
+{{- $boxes := list (list 20 "rung 0") (list 170 "rung 1") (list 320 "rung 2") (list 470 "rung 3") (list 620 "live state") -}}
+<figure class="not-prose my-8">
+  <div class="overflow-x-auto pb-1">
+    <svg class="block min-w-[44rem] w-full text-xs" viewBox="0 0 720 120" role="img" aria-label="Each rung keeps an undo delta to the rung before it plus a small bundle of state that is not journaled. Rewinding to rung 1 seals and applies the open journal, then the deltas of rung 3 and rung 2, then restores rung 1's bundle.">
+      <defs>
+        <marker id="ladder-arrow-on" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M0 0l8 4-8 4" fill="none" stroke-width="1.5" class="stroke-[#2a78d6] dark:stroke-[#3987e5]" />
+        </marker>
+        <marker id="ladder-arrow-off" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto" markerUnits="userSpaceOnUse">
+          <path d="M0 0l8 4-8 4" fill="none" stroke-width="1.5" class="stroke-gray-400 dark:stroke-gray-500" />
+        </marker>
+      </defs>
+      {{- range $i, $b := $boxes }}
+      {{- $x := index $b 0 }}
+      {{- $target := eq $i 1 }}
+      {{- $now := eq $i 4 }}
+      <rect x="{{ $x }}" y="30" width="80" height="48" rx="4" stroke-width="{{ if $target }}2{{ else }}1{{ end }}" class="{{ if $target }}fill-[#2a78d6]/10 stroke-[#2a78d6] dark:fill-[#3987e5]/15 dark:stroke-[#3987e5]{{ else if $now }}fill-none stroke-gray-400 dark:stroke-gray-500{{ else }}fill-gray-100 stroke-gray-300 dark:fill-gray-700/50 dark:stroke-gray-600{{ end }}" />
+      <text x="{{ add $x 40 }}" y="{{ if $now }}58{{ else }}51{{ end }}" text-anchor="middle" class="text-sm font-medium fill-gray-900 dark:fill-white">{{ index $b 1 }}</text>
+      {{- if not $now }}
+      <text x="{{ add $x 40 }}" y="67" text-anchor="middle" class="fill-gray-500 dark:fill-gray-400">bundle</text>
+      {{- end }}
+      {{- if gt $i 0 }}
+      {{- $on := gt $i 1 }}
+      <line x1="{{ sub $x 6 }}" x2="{{ sub $x 64 }}" y1="54" y2="54" stroke-width="{{ if $on }}2{{ else }}1.5{{ end }}" marker-end="url(#ladder-arrow-{{ if $on }}on{{ else }}off{{ end }})" class="{{ if $on }}stroke-[#2a78d6] dark:stroke-[#3987e5]{{ else }}stroke-gray-400 dark:stroke-gray-500{{ end }}" />
+      <text x="{{ sub $x 35 }}" y="46" text-anchor="middle" class="{{ if $on }}fill-[#2a78d6] dark:fill-[#3987e5]{{ else }}fill-gray-500 dark:fill-gray-400{{ end }}">{{ if $now }}journal{{ else }}Δ{{ $i }}{{ end }}</text>
+      {{- end }}
+      {{- end }}
+      <text x="60" y="104" text-anchor="middle" class="fill-gray-500 dark:fill-gray-400">base</text>
+      <text x="210" y="104" text-anchor="middle" class="fill-[#2a78d6] dark:fill-[#3987e5]">rewind target</text>
+    </svg>
+  </div>
+</figure>

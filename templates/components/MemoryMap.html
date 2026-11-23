@@ -1,0 +1,40 @@
+{{- $tint := dict
+  "blue" "bg-[#2a78d6]/10 dark:bg-[#3987e5]/15"
+  "violet" "bg-[#6250d6]/10 dark:bg-[#9085e9]/15"
+  "aqua" "bg-[#1baf7a]/10 dark:bg-[#199e70]/15"
+  "orange" "bg-[#eb6834]/10 dark:bg-[#d95926]/15"
+  "yellow" "bg-[#eda100]/10 dark:bg-[#c98500]/15"
+  "magenta" "bg-[#e87ba4]/10 dark:bg-[#d55181]/15"
+  "gray" "bg-gray-100 dark:bg-gray-700/50" -}}
+{{- $blocks := .Props.blocks -}}
+{{- $lastBlock := sub (len $blocks) 1 -}}
+<figure class="not-prose my-8">
+  <div class="overflow-x-auto pb-1">
+    <div class="flex min-w-[44rem] px-px">
+      {{- range $i, $b := $blocks }}
+      <div class="relative flex min-w-0 flex-col" style="flex: {{ $b.grow | default 1 }} 1 0%">
+        {{- if eq $b.kind "free" }}
+        <div class="relative flex min-h-[4.5rem] flex-1 items-center justify-center border-y border-l border-dashed border-gray-300 px-2 text-xs text-gray-400 dark:border-gray-600 dark:text-gray-500">
+          <svg class="absolute left-1.5 top-1/2 h-3 w-5 -translate-y-1/2" viewBox="0 0 20 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h17m-4.5-4.5L18 6l-4.5 4.5"/></svg>
+          {{ $b.text }}
+          <svg class="absolute right-1.5 top-1/2 h-3 w-5 -translate-y-1/2" viewBox="0 0 20 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 6H2m4.5-4.5L2 6l4.5 4.5"/></svg>
+        </div>
+        {{- else }}
+        <div class="flex min-h-[4.5rem] flex-1 flex-col border-y border-l border-gray-300 px-2.5 py-2 dark:border-gray-600 {{ if eq $i $lastBlock }}border-r{{ end }} {{ index $tint ($b.color | default "gray") }}">
+          <div class="text-sm font-medium leading-snug text-gray-900 dark:text-white">{{ $b.name }}</div>
+          {{- with $b.text }}<div class="mt-0.5 text-xs leading-snug text-gray-600 dark:text-gray-400">{{ . }}</div>{{ end }}
+          {{- with $b.size }}<div class="mt-auto pt-1.5 text-xs tabular-nums text-gray-500 dark:text-gray-400">{{ . }}</div>{{ end }}
+        </div>
+        {{- end }}
+        <div class="relative h-6">
+          <span class="absolute top-1.5 whitespace-nowrap font-mono text-xs text-gray-500 dark:text-gray-400 {{ if eq $i 0 }}left-0{{ else }}left-0 -translate-x-1/2{{ end }}">{{ $b.at }}</span>
+          {{- if eq $i $lastBlock }}
+          <span class="absolute right-0 top-1.5 whitespace-nowrap font-mono text-xs text-gray-500 dark:text-gray-400">{{ $.Props.end }}</span>
+          {{- end }}
+        </div>
+      </div>
+      {{- end }}
+    </div>
+  </div>
+  {{- with .Children }}<figcaption class="mt-2 text-sm text-gray-500 dark:text-gray-400 [&_a]:underline">{{ . }}</figcaption>{{ end }}
+</figure>

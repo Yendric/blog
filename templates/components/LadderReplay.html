@@ -1,0 +1,45 @@
+{{- $plain := list 20 90 150 205 255 300 345 370 -}}
+{{- $dropped := list 445 475 530 575 620 660 695 -}}
+{{- $pages := list 20 88 156 224 292 360 428 496 564 632 700 -}}
+<figure class="not-prose my-8">
+  <div class="overflow-x-auto pb-1">
+    <svg class="block min-w-[44rem] w-full text-xs" viewBox="0 0 720 168" role="img" aria-label="An edit restores the closest rung before it and discards the rungs after it. The engine replays up to the last visible page, takes a horizon rung there, and later finishes the rest of the document in the background starting from that horizon rung.">
+      <line x1="20" x2="700" y1="70" y2="70" class="stroke-gray-300 dark:stroke-gray-600" />
+      {{- range $plain }}
+      <line x1="{{ . }}" x2="{{ . }}" y1="48" y2="70" stroke-width="2" class="stroke-gray-400 dark:stroke-gray-500" />
+      {{- end }}
+      {{- range $dropped }}
+      <line x1="{{ . }}" x2="{{ . }}" y1="48" y2="70" stroke-width="2" stroke-dasharray="3 3" class="stroke-gray-300 dark:stroke-gray-600" />
+      {{- end }}
+      <text x="640" y="40" text-anchor="middle" class="fill-gray-500 dark:fill-gray-400">discarded</text>
+
+      <line x1="400" x2="400" y1="48" y2="70" stroke-width="3" stroke-linecap="round" class="stroke-[#2a78d6] dark:stroke-[#3987e5]" />
+      <circle cx="400" cy="45" r="3" class="fill-[#2a78d6] dark:fill-[#3987e5]" />
+
+      <line x1="412" x2="412" y1="26" y2="70" stroke-width="2" class="stroke-[#eb6834] dark:stroke-[#d95926]" />
+      <path d="M406 20h12l-6 8z" class="fill-[#eb6834] dark:fill-[#d95926]" />
+      <text x="424" y="28" class="fill-gray-700 dark:fill-gray-300">edit</text>
+
+      <line x1="496" x2="496" y1="40" y2="70" stroke-width="3" stroke-linecap="round" class="stroke-[#2a78d6] dark:stroke-[#3987e5]" />
+      <path d="M496 31l5 5-5 5-5-5z" class="fill-[#2a78d6] dark:fill-[#3987e5]" />
+      <text x="496" y="22" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300">horizon</text>
+
+      <rect x="400" y="80" width="96" height="6" rx="3" class="fill-[#2a78d6] dark:fill-[#3987e5]" />
+      <line x1="500" x2="700" y1="83" y2="83" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" class="stroke-[#2a78d6]/40 dark:stroke-[#3987e5]/50" />
+      <text x="396" y="100" text-anchor="end" class="fill-[#2a78d6] dark:fill-[#3987e5]">restore</text>
+      <text x="404" y="100" class="fill-[#2a78d6] dark:fill-[#3987e5]">replay</text>
+      <text x="504" y="100" class="fill-gray-500 dark:fill-gray-400">background tail, from the horizon</text>
+      <line x1="496" x2="496" y1="88" y2="110" stroke-dasharray="2 2" class="stroke-[#2a78d6]/60 dark:stroke-[#3987e5]/60" />
+      <path d="M362 142v5h132v-5" fill="none" class="stroke-[#2a78d6]/60 dark:stroke-[#3987e5]/60" />
+      <text x="428" y="162" text-anchor="middle" class="fill-gray-700 dark:fill-gray-300">on screen</text>
+
+      {{- range $i, $x := $pages }}
+      {{- if lt $i 10 }}
+      {{- $visible := or (eq $i 5) (eq $i 6) }}
+      <rect x="{{ add $x 2 }}" y="112" width="64" height="24" rx="2" stroke-width="1" class="{{ if $visible }}fill-[#2a78d6]/10 stroke-[#2a78d6]/60 dark:fill-[#3987e5]/15 dark:stroke-[#3987e5]/60{{ else }}fill-none stroke-gray-300 dark:stroke-gray-600{{ end }}" />
+      <text x="{{ add $x 34 }}" y="128" text-anchor="middle" class="{{ if $visible }}fill-gray-900 dark:fill-white{{ else }}fill-gray-400 dark:fill-gray-500{{ end }} tabular-nums">{{ add $i 1 }}</text>
+      {{- end }}
+      {{- end }}
+    </svg>
+  </div>
+</figure>

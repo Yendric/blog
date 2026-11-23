@@ -4,6 +4,8 @@ import geny from '@yendric/geny/vite'
 
 export default defineConfig({
   plugins: [react(), geny()],
+  // the package resolves its worker with import.meta.url, which prebundling would break
+  optimizeDeps: { exclude: ['@texyon/wasm'] },
   server: {
     // geny writes the configured dev server URL into its hot file
     strictPort: true,
